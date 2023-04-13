@@ -1,14 +1,12 @@
 package io.github.potatoy.auth_ex.service;
 
-import java.util.Collections;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.github.potatoy.auth_ex.dto.UserDto;
-import io.github.potatoy.auth_ex.entity.Authority;
 import io.github.potatoy.auth_ex.entity.User;
+import io.github.potatoy.auth_ex.entity.UserRole;
 import io.github.potatoy.auth_ex.exception.DuplicateMemberException;
 import io.github.potatoy.auth_ex.exception.NotFoundMemberException;
 import io.github.potatoy.auth_ex.repository.UserRepository;
@@ -34,16 +32,17 @@ public class UserService {
             throw new DuplicateMemberException("이미 가입되어 있는 유저입니다.");
         }
 
-        Authority authority = Authority.builder()
-                .authorityName("ROLE_USER")
-                .build();
+        // Authority authority = Authority.builder()
+        //         .authorityName("ROLE_USER")
+        //         .build();
         // 권한 정보 저장
 
         User user = User.builder()
                 .userEmail(userDto.getUserEmail())
                 .password(passwordEncoder.encode(userDto.getPassword()))
                 .nickname(userDto.getNickname())
-                .authorities(Collections.singleton(authority))
+                // .authorities(Collections.singleton(authority))
+                .role(UserRole.USER)
                 .activated(true)
                 .build();
 

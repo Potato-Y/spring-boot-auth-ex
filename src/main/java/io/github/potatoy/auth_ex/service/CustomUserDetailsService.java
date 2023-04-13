@@ -2,6 +2,7 @@ package io.github.potatoy.auth_ex.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.github.potatoy.auth_ex.entity.User;
+import io.github.potatoy.auth_ex.entity.UserRole;
 import io.github.potatoy.auth_ex.repository.UserRepository;
 
 @Component("userDetailsService")
@@ -43,9 +45,12 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new RuntimeException(userEmail + "는(은) 활성화되어 있지 않습니다.");
         }
 
-        List<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream() // 권한 정보
-                .map(authrity -> new SimpleGrantedAuthority(authrity.getAuthorityName()))
-                .collect(Collectors.toList());
+        // List<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream() // 권한 정보
+        //         .map(authrity -> new SimpleGrantedAuthority(authrity.getAuthorityName()))
+        //         .collect(Collectors.toList());
+
+        List<GrantedAuthority> grantedAuthorities = Stream.of(UserRole.values())
+                .map(authrity -> new SimpleGrantedAuthority(authrity.getKey())).collect(Collectors.toList());
 
         return new org.springframework.security.core.userdetails.User(user.getUserEmail(), user.getPassword(),
                 grantedAuthorities); // UserEmail과 Password를 가지고 User 객체를 반환한다.
