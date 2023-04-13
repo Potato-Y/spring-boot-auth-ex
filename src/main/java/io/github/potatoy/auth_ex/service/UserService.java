@@ -44,6 +44,7 @@ public class UserService {
                 .password(passwordEncoder.encode(userDto.getPassword()))
                 .nickname(userDto.getNickname())
                 .country(userDto.getCountry())
+                .language(userDto.getLanguage())
                 .authorities(Collections.singleton(authority))
                 .activated(true)
                 .build();

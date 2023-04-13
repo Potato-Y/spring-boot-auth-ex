@@ -36,6 +36,10 @@ public class User {
     @Column(name = "country", nullable = false)
     private Country country;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "language", nullable = false)
+    private Language language;
+
     @ManyToMany // 일대다, 다대일 관계의 조인 테이블로 정의
     @JoinTable(name = "user_authority", joinColumns = {
             @JoinColumn(name = "user_id", referencedColumnName = "user_id") }, inverseJoinColumns = {
