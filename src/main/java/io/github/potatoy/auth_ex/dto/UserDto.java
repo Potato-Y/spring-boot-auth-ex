@@ -45,6 +45,7 @@ public class UserDto {
         return UserDto.builder()
                 .userEmail(user.getUserEmail())
                 .nickname(user.getNickname())
+                // .role(user.getRole())
                 .role(user.getRole())
                 .build();
     }

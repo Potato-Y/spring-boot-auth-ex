@@ -59,7 +59,8 @@ public class TokenProvider implements InitializingBean {
         // jwt token 생성 및 반환
         return Jwts.builder()
                 .setSubject(authentication.getName())
-                .claim(AUTHORITIES_KEY, authorities)
+                // .claim(AUTHORITIES_KEY, authorities)
+                .claim(AUTHORITIES_KEY, authorities.replace("ROLE_ROLE_", "ROLE_"))
                 .signWith(key, SignatureAlgorithm.HS512)
                 .setExpiration(validity)
                 .compact();

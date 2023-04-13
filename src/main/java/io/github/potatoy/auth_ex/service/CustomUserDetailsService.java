@@ -1,5 +1,7 @@
 package io.github.potatoy.auth_ex.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -45,12 +47,12 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new RuntimeException(userEmail + "는(은) 활성화되어 있지 않습니다.");
         }
 
-        // List<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream() // 권한 정보
-        //         .map(authrity -> new SimpleGrantedAuthority(authrity.getAuthorityName()))
+        // List<GrantedAuthority> grantedAuthorities = user.getRole().stream() // 권한 정보
+        //         .map(authrity -> new SimpleGrantedAuthority(authrity.getKey()))
         //         .collect(Collectors.toList());
 
-        List<GrantedAuthority> grantedAuthorities = Stream.of(UserRole.values())
-                .map(authrity -> new SimpleGrantedAuthority(authrity.getKey())).collect(Collectors.toList());
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+user.getRole().getKey()));
 
         return new org.springframework.security.core.userdetails.User(user.getUserEmail(), user.getPassword(),
                 grantedAuthorities); // UserEmail과 Password를 가지고 User 객체를 반환한다.

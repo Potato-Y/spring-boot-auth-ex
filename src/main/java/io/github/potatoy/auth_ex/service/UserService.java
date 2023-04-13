@@ -1,5 +1,7 @@
 package io.github.potatoy.auth_ex.service;
 
+import java.util.Collections;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +44,7 @@ public class UserService {
                 .password(passwordEncoder.encode(userDto.getPassword()))
                 .nickname(userDto.getNickname())
                 // .authorities(Collections.singleton(authority))
+                // .role(UserRole.USER)
                 .role(UserRole.USER)
                 .activated(true)
                 .build();

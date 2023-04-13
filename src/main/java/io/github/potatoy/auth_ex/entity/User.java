@@ -2,6 +2,8 @@ package io.github.potatoy.auth_ex.entity;
 
 import lombok.*;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 
