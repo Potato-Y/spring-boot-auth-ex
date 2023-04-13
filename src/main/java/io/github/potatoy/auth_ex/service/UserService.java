@@ -43,6 +43,7 @@ public class UserService {
                 .userEmail(userDto.getUserEmail())
                 .password(passwordEncoder.encode(userDto.getPassword()))
                 .nickname(userDto.getNickname())
+                .country(userDto.getCountry())
                 .authorities(Collections.singleton(authority))
                 .activated(true)
                 .build();

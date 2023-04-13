@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.github.potatoy.auth_ex.entity.Country;
 import io.github.potatoy.auth_ex.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,6 +37,9 @@ public class UserDto {
     @Size(min = 3, max = 50)
     private String nickname;
 
+    @NotNull
+    private Country country;
+
     private Set<AuthorityDto> authorityDtoSet;
 
     public static UserDto from(User user) {
@@ -45,6 +49,7 @@ public class UserDto {
         return UserDto.builder()
                 .userEmail(user.getUserEmail())
                 .nickname(user.getNickname())
+                .country(user.getCountry())
                 .authorityDtoSet(user.getAuthorities().stream()
                         .map(authority -> AuthorityDto.builder().authorityName(authority.getAuthorityName()).build())
                         .collect(Collectors.toSet()))
