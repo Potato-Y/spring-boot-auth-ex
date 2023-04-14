@@ -6,6 +6,8 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.github.potatoy.auth_ex.entity.Country;
+import io.github.potatoy.auth_ex.entity.Language;
 import io.github.potatoy.auth_ex.entity.User;
 import io.github.potatoy.auth_ex.entity.UserRole;
 import lombok.AllArgsConstructor;
@@ -34,9 +36,15 @@ public class UserDto {
     @Size(min = 3, max = 50)
     private String nickname;
 
-    // 국가와 언어가 들어갈 예정
+
+    @NotNull
+    private Country country;
+
+    @NotNull
+    private Language language;
 
     private UserRole role;
+
 
     public static UserDto from(User user) {
         if (user == null)
@@ -45,7 +53,8 @@ public class UserDto {
         return UserDto.builder()
                 .userEmail(user.getUserEmail())
                 .nickname(user.getNickname())
-                // .role(user.getRole())
+                .country(user.getCountry())
+                .language(user.getLanguage())
                 .role(user.getRole())
                 .build();
     }

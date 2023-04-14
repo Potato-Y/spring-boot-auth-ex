@@ -43,8 +43,8 @@ public class UserService {
                 .userEmail(userDto.getUserEmail())
                 .password(passwordEncoder.encode(userDto.getPassword()))
                 .nickname(userDto.getNickname())
-                // .authorities(Collections.singleton(authority))
-                // .role(UserRole.USER)
+                .country(userDto.getCountry())
+                .language(userDto.getLanguage())
                 .role(UserRole.USER)
                 .activated(true)
                 .build();
