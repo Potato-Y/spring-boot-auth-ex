@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class HelloController {
+public class PingPongController {
 
-    @GetMapping("/hello")
+    @GetMapping("/ping")
     public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("hello");
+        return ResponseEntity.ok("pong");
     }
 }

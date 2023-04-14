@@ -1,8 +1,5 @@
 package io.github.potatoy.auth_ex.dto;
 
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -12,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.potatoy.auth_ex.entity.Country;
 import io.github.potatoy.auth_ex.entity.Language;
 import io.github.potatoy.auth_ex.entity.User;
+import io.github.potatoy.auth_ex.entity.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -38,13 +36,15 @@ public class UserDto {
     @Size(min = 3, max = 50)
     private String nickname;
 
+
     @NotNull
     private Country country;
 
     @NotNull
     private Language language;
 
-    private Set<AuthorityDto> authorityDtoSet;
+    private UserRole role;
+
 
     public static UserDto from(User user) {
         if (user == null)
@@ -55,9 +55,7 @@ public class UserDto {
                 .nickname(user.getNickname())
                 .country(user.getCountry())
                 .language(user.getLanguage())
-                .authorityDtoSet(user.getAuthorities().stream()
-                        .map(authority -> AuthorityDto.builder().authorityName(authority.getAuthorityName()).build())
-                        .collect(Collectors.toSet()))
+                .role(user.getRole())
                 .build();
     }
 
