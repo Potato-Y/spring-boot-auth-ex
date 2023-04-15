@@ -2,7 +2,6 @@ package io.github.potatoy.auth_ex.repository;
 
 import java.util.Optional;
 
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import io.github.potatoy.auth_ex.entity.User;

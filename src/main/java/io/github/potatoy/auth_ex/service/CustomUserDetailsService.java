@@ -1,10 +1,7 @@
 package io.github.potatoy.auth_ex.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,7 +12,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.github.potatoy.auth_ex.entity.User;
-import io.github.potatoy.auth_ex.entity.UserRole;
 import io.github.potatoy.auth_ex.repository.UserRepository;
 
 @Component("userDetailsService")
