@@ -76,6 +76,9 @@ public class SecurityConfig {
 
                 .and() // 토큰이 없는 상태로 들어오는 요청에 대해 permitAll 설정
                 .authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/js/**").permitAll()
                 .antMatchers("/api/ping").permitAll()
                 .antMatchers("/api/authenticate").permitAll()
                 .antMatchers("/api/signup").permitAll()
