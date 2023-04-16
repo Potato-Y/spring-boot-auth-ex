@@ -46,7 +46,8 @@ public class SecurityConfig {
     // mariaDB에서는 제거 예정
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/h2-console/**", "/favicon.ico", "/error");
+        return (web) -> web.ignoring().antMatchers("/h2-console/**", "/favicon.ico", "/error")
+                .antMatchers("/resources/**", "/static/**", "/webjars/**");
     }
 
     @Bean
@@ -77,8 +78,10 @@ public class SecurityConfig {
                 .and() // 토큰이 없는 상태로 들어오는 요청에 대해 permitAll 설정
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/chat").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
+                .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/api/ping").permitAll()
                 .antMatchers("/api/authenticate").permitAll()
                 .antMatchers("/api/signup").permitAll()
