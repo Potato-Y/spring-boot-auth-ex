@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.filter.CorsFilter;
 
-@EnableWebSecurity
+@EnableWebSecurity // 기본적인 web 보안 실행
 @EnableGlobalMethodSecurity(prePostEnabled = true) // @PreAuthorize 어노테이션을 메소드 단위로 추가하기 위해 적용
 public class SecurityConfig {
 
@@ -55,7 +55,6 @@ public class SecurityConfig {
         http
                 .csrf().disable() // post 통신 시 403 에러 방지
                 // token을 사용하는 방식이기 때문에 csrf를 disable 한다.
-                .cors().disable()
 
                 .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
 
@@ -76,7 +75,7 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
                 .and() // 토큰이 없는 상태로 들어오는 요청에 대해 permitAll 설정
-                .authorizeRequests()
+                .authorizeRequests() // HttpServletRequest를 사용하는 요청들에 대한 접근 제한 설정
                 .antMatchers("/").permitAll()
                 .antMatchers("/chat").permitAll()
                 .antMatchers("/css/**").permitAll()

@@ -3,7 +3,6 @@ package io.github.potatoy.auth_ex.controller;
 import io.github.potatoy.auth_ex.config.Greeting;
 import io.github.potatoy.auth_ex.config.HelloMessage;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
