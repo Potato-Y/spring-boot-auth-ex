@@ -6,10 +6,10 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import io.github.potatoy.auth_ex.entity.Country;
-import io.github.potatoy.auth_ex.entity.Language;
-import io.github.potatoy.auth_ex.entity.User;
-import io.github.potatoy.auth_ex.entity.UserRole;
+import io.github.potatoy.auth_ex.entity.user.Country;
+import io.github.potatoy.auth_ex.entity.user.Language;
+import io.github.potatoy.auth_ex.entity.user.User;
+import io.github.potatoy.auth_ex.entity.user.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

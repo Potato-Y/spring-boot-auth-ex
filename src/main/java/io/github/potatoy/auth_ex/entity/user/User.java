@@ -1,4 +1,4 @@
-package io.github.potatoy.auth_ex.entity;
+package io.github.potatoy.auth_ex.entity.user;
 
 import lombok.*;
 

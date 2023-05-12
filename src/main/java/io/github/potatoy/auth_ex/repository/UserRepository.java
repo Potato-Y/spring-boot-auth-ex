@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import io.github.potatoy.auth_ex.entity.User;
+import io.github.potatoy.auth_ex.entity.user.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     // JpaRepository를 extends하면 findAll, save 등의 메소드를 기본적으로 사용할 수 있게 된다.

@@ -1,4 +1,4 @@
-package io.github.potatoy.auth_ex.entity;
+package io.github.potatoy.auth_ex.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

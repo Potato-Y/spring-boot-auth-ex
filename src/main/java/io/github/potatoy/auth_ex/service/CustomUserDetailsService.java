@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import io.github.potatoy.auth_ex.entity.User;
+import io.github.potatoy.auth_ex.entity.user.User;
 import io.github.potatoy.auth_ex.repository.UserRepository;
 
 @Component("userDetailsService")

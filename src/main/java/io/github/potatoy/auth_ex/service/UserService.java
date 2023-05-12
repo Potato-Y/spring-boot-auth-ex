@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.github.potatoy.auth_ex.dto.UserDto;
-import io.github.potatoy.auth_ex.entity.User;
-import io.github.potatoy.auth_ex.entity.UserRole;
+import io.github.potatoy.auth_ex.entity.user.User;
+import io.github.potatoy.auth_ex.entity.user.UserRole;
 import io.github.potatoy.auth_ex.exception.DuplicateMemberException;
 import io.github.potatoy.auth_ex.exception.NotFoundMemberException;
 import io.github.potatoy.auth_ex.repository.UserRepository;
